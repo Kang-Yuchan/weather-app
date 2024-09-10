@@ -1,0 +1,31 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: #888;
+  }
+
+  &:focus {
+    border-color: #2196f5; /* フォーカス時の色を強調 */
+    box-shadow: 0 0 0 3px rgba(33, 150, 245, 0.3); /* 青みのある影 */
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    cursor: not-allowed;
+  }
+}
