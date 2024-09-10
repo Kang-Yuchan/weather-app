@@ -7,22 +7,5 @@ $breakpoint-desktop: 1024px;
 $background-color: #f0f0f0;
 $white-color: #fff;
 $text-color: #333;
-
-// ミックスイン
-@mixin mobile {
-  @media (max-width: #{$breakpoint-mobile - 1px}) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$breakpoint-tablet}) {
-    @content;
-  }
-}
+$wrapper-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$hover-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

@@ -12,7 +12,7 @@ const nextConfig = {
     ],
   },
   sassOptions: {
-    prependData: `@import "@/styles/variables.scss";`,
+    prependData: `@import "@/styles/variables.scss"; @import "@/styles/mixin.scss";`,
   },
 };
 
