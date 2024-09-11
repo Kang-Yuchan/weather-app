@@ -7,7 +7,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
   return (
     <div className={classNames(styles.inputWrapper, className)}>
-      <input ref={ref} className={styles.input} {...props} />
+      <input ref={ref} className={styles.input} role="textbox" {...props} />
     </div>
   );
 });
