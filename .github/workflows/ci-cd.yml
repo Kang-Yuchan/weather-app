@@ -44,6 +44,9 @@ jobs:
         run: pnpm lint
 
       - name: Run tests
+        env:
+          NODE_PATH: src
+          TS_JEST_TRANSFORMER_OPTION: '{"cacheDirectory": ".jest-cache"}'
         run: pnpm test
 
       - name: Build
