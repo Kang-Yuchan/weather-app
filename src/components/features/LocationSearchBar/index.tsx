@@ -1,9 +1,8 @@
 import { useCallback, memo, useState } from 'react';
 import classNames from 'classnames';
-import useLocationSearch from '@/hooks/useLocationSearch';
 import Input from '@/components/ui/Input';
 import styles from './index.module.scss';
-import useSearchKeyboardNavigation from '@/hooks/useSearchKeyboardNavigation';
+import { useLocationSearch, useSearchKeyboardNavigation } from '@/hooks';
 
 type SearchBarProps = {
   placeholder?: string;
