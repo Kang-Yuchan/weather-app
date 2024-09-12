@@ -47,3 +47,5 @@ export const mockSearchLocationData: LocationResponse[] = [
     url: 'toluca-mxico-mexico',
   },
 ];
+
+export const mockSuggestions = ['Tokyo', 'Toronto', 'Tolyatti', 'Touba', 'Toluca'];
