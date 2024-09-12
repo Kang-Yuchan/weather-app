@@ -53,7 +53,7 @@ const useSearchKeyboardNavigation = ({
           break;
       }
     },
-    [setIsFocused, suggestions, selectedIndex, onSelect]
+    [setIsFocused, suggestions, selectedIndex, onSelect, onSearch]
   );
 
   useEffect(() => {
