@@ -30,45 +30,49 @@ export type WeatherResponse = {
     cloud: number;
     feelslike_c: number;
     feelslike_f: number;
+    heatindex_c: number;
+    windchill_c: number;
+    dewpoint_c: number;
+    heatindex_f: number;
+    windchill_f: number;
+    dewpoint_f: number;
     vis_km: number;
     vis_miles: number;
     uv: number;
     gust_mph: number;
     gust_kph: number;
-    air_quality: {
-      co: number;
-      no2: number;
-      o3: number;
-      so2: number;
-      pm2_5: number;
-      pm10: number;
-    };
   };
 };
 
 export type ForecastResponse = WeatherResponse & {
   forecast: {
-    forecastday: Array<{
-      date: string;
-      day: {
-        maxtemp_c: number;
-        mintemp_c: number;
-        condition: {
-          text: string;
-          icon: string;
-          code: number;
-        };
-      };
-    }>;
+    forecastday: Array<ForecastDay>;
+  };
+};
+
+export type ForecastDay = {
+  date: string;
+  day: {
+    maxtemp_c: number;
+    mintemp_c: number;
+    condition: {
+      text: string;
+      icon: string;
+      code: number;
+    };
   };
 };
 
 export type FutureResponse = Omit<ForecastResponse, 'current'>;
 
 export type LocationResponse = {
+  id: number;
   name: string;
   region: string;
   country: string;
   lat: number;
   lon: number;
+  url: string;
 };
+
+export type WeatherQuery = string | { lat: string; lon: string };
