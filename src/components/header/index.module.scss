@@ -1,0 +1,17 @@
+.header {
+  height: 60px;
+  background-color: $text-color;
+  padding-left: 5vw;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: $white-color;
+  font-size: 16px;
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
