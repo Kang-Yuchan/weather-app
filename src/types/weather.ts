@@ -58,7 +58,7 @@ export type ForecastDay = {
   hour: HourData[];
 };
 
-export type FutureResponse = Omit<ForecastResponse, 'current'>;
+export type SpecificDayResponse = Omit<ForecastResponse, 'current'>;
 
 export type LocationResponse = {
   id: number;
@@ -106,7 +106,7 @@ type AstroData = {
   is_sun_up: number;
 };
 
-type HourData = {
+export type HourData = {
   time_epoch: number;
   time: string;
   temp_c: number;
