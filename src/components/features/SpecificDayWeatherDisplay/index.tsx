@@ -56,7 +56,10 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
   };
 
   return (
-    <div className={classNames(styles.weatherDisplay, getTemperatureColor(day.avgtemp_c))}>
+    <div
+      className={classNames(styles.weatherDisplay, getTemperatureColor(day.avgtemp_c))}
+      data-testid="specific-day-weather"
+    >
       <div className={styles.mainInfo}>
         <h2 className={styles.location}>
           {location.name}, {location.country}
