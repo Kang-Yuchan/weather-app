@@ -1,4 +1,4 @@
-import Header from '@/components/header/indext';
+import Header from '@/components/header';
 import '@/styles/globals.scss';
 import { Noto_Sans_JP } from 'next/font/google';
 
