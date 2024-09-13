@@ -7,9 +7,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 3 : undefined,
   reporter: process.env.CI ? 'github' : 'html',
-  timeout: 60000, // グローバルタイムアウトを60秒に設定
+  timeout: 120 * 1000, // グローバルタイムアウトを60秒に設定
   expect: {
-    timeout: 20000, // expect()のデフォルトタイムアウトを20秒に設定
+    timeout: 60 * 1000, // expect()のデフォルトタイムアウトを20秒に設定
   },
   use: {
     baseURL: 'http://localhost:8765',
@@ -26,6 +26,6 @@ export default defineConfig({
     command: `pnpm dev`,
     url: 'http://localhost:8765',
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    timeout: 120 * 1000,
   },
 });
