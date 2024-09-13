@@ -1,4 +1,10 @@
-import { ForecastDay, ForecastResponse, LocationResponse, WeatherResponse } from '@/types/weather';
+import {
+  ForecastDay,
+  ForecastResponse,
+  HourData,
+  LocationResponse,
+  WeatherResponse,
+} from '@/types/weather';
 
 export const mockSearchLocationData: LocationResponse[] = [
   {
@@ -598,4 +604,45 @@ export const mockForecastWeather: ForecastResponse = {
       },
     ],
   },
+};
+
+export const mockHourData: HourData = {
+  time_epoch: 1726239600,
+  time: '2024-09-14 00:00',
+  temp_c: 28.7,
+  temp_f: 83.6,
+  is_day: 0,
+  condition: {
+    text: '快晴',
+    icon: '//cdn.weatherapi.com/weather/64x64/night/113.png',
+    code: 1000,
+  },
+  wind_mph: 13.4,
+  wind_kph: 21.6,
+  wind_degree: 210,
+  wind_dir: 'SSW',
+  pressure_mb: 1008.0,
+  pressure_in: 29.77,
+  precip_mm: 0.0,
+  precip_in: 0.0,
+  snow_cm: 0.0,
+  humidity: 68,
+  cloud: 13,
+  feelslike_c: 31.9,
+  feelslike_f: 89.5,
+  windchill_c: 28.7,
+  windchill_f: 83.6,
+  heatindex_c: 31.9,
+  heatindex_f: 89.5,
+  dewpoint_c: 22.3,
+  dewpoint_f: 72.1,
+  will_it_rain: 0,
+  chance_of_rain: 0,
+  will_it_snow: 0,
+  chance_of_snow: 0,
+  vis_km: 10.0,
+  vis_miles: 6.0,
+  gust_mph: 17.8,
+  gust_kph: 28.6,
+  uv: 0,
 };
