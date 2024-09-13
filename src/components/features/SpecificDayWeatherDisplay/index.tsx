@@ -11,13 +11,12 @@ type SpecificDayWeatherDisplayProps = {
 };
 
 const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) => {
-  const [selectedHour, setSelectedHour] = useState<HourData | null>(null);
-
-  if (!weather || !weather.forecast || !weather.forecast.forecastday[0]) return null;
-
   const { location, forecast } = weather;
   const forecastDay: ForecastDay = forecast.forecastday[0];
   const { day, astro, hour } = forecastDay;
+  const [selectedHour, setSelectedHour] = useState<HourData | null>(hour[0]);
+
+  if (!weather || !weather.forecast || !weather.forecast.forecastday[0]) return null;
 
   const getTemperatureColor = (temp: number) => {
     if (temp >= 35) return styles.scorching;
@@ -99,7 +98,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
       {selectedHour && (
         <div className={styles.selectedHourDetailsWrapper}>
           <h4>選択時間の詳細: {selectedHour.time.split(' ')[1]}</h4>
-          <div className={styles.selectedHourDetails}>
+          <div className={styles.details}>
             <DetailItem datail={{ label: '気温 (°C)', value: selectedHour.temp_c }} />
             <DetailItem datail={{ label: '体感温度 (°C)', value: selectedHour.feelslike_c }} />
             <DetailItem datail={{ label: '湿度', value: selectedHour.humidity, unit: '%' }} />

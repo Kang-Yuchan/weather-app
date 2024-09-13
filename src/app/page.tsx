@@ -41,7 +41,7 @@ export default function Home() {
       {weather && forecast && (
         <div className={styles.weatherWrapper}>
           {<CurrentWeatherDisplay weather={weather} />}
-          {<ForecastWeatherDisplay forecast={forecast} />}
+          {<ForecastWeatherDisplay location={weather.location.name} forecast={forecast} />}
         </div>
       )}
     </Layout>

@@ -3,10 +3,11 @@ import styles from './index.module.scss';
 import DayForecastCard from '@/components/features/DayForecastCard';
 
 type ForecastWeatherDisplayProps = {
+  location: string;
   forecast: ForecastResponse;
 };
 
-const ForecastWeatherDisplay = ({ forecast }: ForecastWeatherDisplayProps) => {
+const ForecastWeatherDisplay = ({ location, forecast }: ForecastWeatherDisplayProps) => {
   if (!forecast || !forecast.forecast) return null;
 
   return (
@@ -14,7 +15,7 @@ const ForecastWeatherDisplay = ({ forecast }: ForecastWeatherDisplayProps) => {
       <h2 className={styles.title}>7日間の天気予報</h2>
       <div className={styles.forecastGrid}>
         {forecast.forecast.forecastday.map((day) => (
-          <DayForecastCard key={day.date} day={day} />
+          <DayForecastCard key={day.date} location={location} day={day} />
         ))}
       </div>
     </div>

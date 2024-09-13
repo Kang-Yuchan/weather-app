@@ -4,12 +4,13 @@ import styles from './index.module.scss';
 import { ForecastDay } from '@/types/weather';
 
 type DayForecastCardProps = {
+  location: string;
   day: ForecastDay;
 };
 
-const DayForecastCard = ({ day }: DayForecastCardProps) => {
+const DayForecastCard = ({ location, day }: DayForecastCardProps) => {
   return (
-    <Link href={`/specific_day/${day.date}`} className={styles.dayForecast}>
+    <Link href={`/specific_day/${location}/${day.date}`} className={styles.dayForecast}>
       <div className={styles.date}>
         {new Date(day.date).toLocaleDateString('ja-JP', {
           weekday: 'short',
