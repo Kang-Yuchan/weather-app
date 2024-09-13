@@ -70,7 +70,7 @@ jobs:
     name: E2E Tests
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-focal
+      image: mcr.microsoft.com/playwright:v1.47.1-focal
       options: --user 1001 --shm-size=1gb
     strategy:
       fail-fast: false
