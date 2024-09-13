@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './index.module.scss';
 
 type DetailItemProps = {
@@ -6,14 +7,15 @@ type DetailItemProps = {
     value: string | number;
     unit?: string;
   };
+  className?: string;
 };
 
-const DetailItem = ({ datail: { label, value, unit = '' } }: DetailItemProps) => (
-  <div className={styles.detailItem}>
+const DetailItem = ({ datail: { label, value, unit = '' }, className }: DetailItemProps) => (
+  <div className={classNames(styles.detailItem, className)}>
     <span className={styles.label}>{label}:</span>
     <span className={styles.value}>
       {value}
-      {unit}
+      <span>{unit}</span>
     </span>
   </div>
 );
