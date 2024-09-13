@@ -12,8 +12,8 @@ const API_ENDPOINTS = {
   FUTURE: '/future.json',
 };
 
-const useSpecificDayWeather = (dt: string) => {
-  const { query, onSearch, getQueryString } = useWeatherQuery();
+const useSpecificDayWeather = (q: string, dt: string) => {
+  const { getQueryString } = useWeatherQuery();
 
   const today = new Date();
   const specificDate = new Date(dt);
@@ -27,14 +27,14 @@ const useSpecificDayWeather = (dt: string) => {
   }
 
   const { data, error, isLoading } = useSWR(
-    query ? [apiUrl, { q: getQueryString(query), dt }] : null,
+    q ? [apiUrl, { q: getQueryString(q), dt }] : null,
     async ([url, params]) => await fetcher<SpecificDayResponse>(url, params),
     {
       refreshInterval: 300000,
     }
   );
 
-  return { weather: data, onSearch, isLoading, error };
+  return { weather: data, isLoading, error };
 };
 
 export default useSpecificDayWeather;
