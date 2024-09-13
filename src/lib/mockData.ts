@@ -1,4 +1,4 @@
-import { LocationResponse } from '@/types/weather';
+import { LocationResponse, WeatherResponse } from '@/types/weather';
 
 export const mockSearchLocationData: LocationResponse[] = [
   {
@@ -49,3 +49,51 @@ export const mockSearchLocationData: LocationResponse[] = [
 ];
 
 export const mockSuggestions = ['Tokyo', 'Toronto', 'Tolyatti', 'Touba', 'Toluca'];
+
+export const mockCurrentWeather: WeatherResponse = {
+  location: {
+    name: 'Tokyo',
+    region: 'Tokyo',
+    country: 'Japan',
+    lat: 35.69,
+    lon: 139.69,
+    tz_id: 'Asia/Tokyo',
+    localtime_epoch: 1726244730,
+    localtime: '2024-09-14 01:25',
+  },
+  current: {
+    last_updated_epoch: 1726244100,
+    last_updated: '2024-09-14 01:15',
+    temp_c: 28.1,
+    temp_f: 82.6,
+    is_day: 0,
+    condition: {
+      text: '所により曇り',
+      icon: '//cdn.weatherapi.com/weather/64x64/night/116.png',
+      code: 1003,
+    },
+    wind_mph: 10.1,
+    wind_kph: 16.2,
+    wind_degree: 225,
+    wind_dir: 'SW',
+    pressure_mb: 1008.0,
+    pressure_in: 29.77,
+    precip_mm: 0.18,
+    precip_in: 0.01,
+    humidity: 70,
+    cloud: 25,
+    feelslike_c: 31.0,
+    feelslike_f: 87.8,
+    windchill_c: 28.7,
+    windchill_f: 83.6,
+    heatindex_c: 32.1,
+    heatindex_f: 89.7,
+    dewpoint_c: 22.5,
+    dewpoint_f: 72.6,
+    vis_km: 10.0,
+    vis_miles: 6.0,
+    uv: 1.0,
+    gust_mph: 13.4,
+    gust_kph: 21.5,
+  },
+};
