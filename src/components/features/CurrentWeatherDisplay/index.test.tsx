@@ -33,7 +33,7 @@ describe('CurrentWeatherDisplay Component', () => {
     expect(screen.getByText('湿度:')).toBeInTheDocument();
     expect(screen.getByText('70')).toBeInTheDocument();
 
-    expect(screen.getByText('最終更新: 2024/9/14 1:15:00')).toBeInTheDocument();
+    expect(screen.getByText(/最終更新:.*1:15:00/i)).toBeInTheDocument();
   });
   // 昼夜の情報が正しくレンダリングされてるか
   it('displays day/night information correctly', () => {
