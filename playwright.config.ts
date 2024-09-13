@@ -7,9 +7,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 3 : undefined,
   reporter: process.env.CI ? 'github' : 'html',
-  timeout: 120 * 1000, // グローバルタイムアウトを60秒に設定
+  timeout: 120 * 1000,
   expect: {
-    timeout: 60 * 1000, // expect()のデフォルトタイムアウトを20秒に設定
+    timeout: 60 * 1000,
   },
   use: {
     baseURL: 'http://localhost:8765',

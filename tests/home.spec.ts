@@ -4,7 +4,9 @@ test('home page has title and search bar', async ({ page }) => {
   await page.goto('/');
 
   // タイトルをチェック
-  await expect(page).toHaveTitle('Weather App');
+  const title = page.getByTestId('page-title');
+
+  await expect(title).toHaveText(/天気アプリケーション/);
 
   // 検索バーが存在することを確認
   const searchBar = page.getByRole('textbox');
@@ -20,7 +22,7 @@ test('search for weather information', async ({ page }) => {
   await searchBar.press('Enter');
 
   // 結果が表示されるのを待つ
-  await expect(page.getByText('Tokyo, Japan')).toBeVisible({ timeout: 30000 });
+  await expect(page.getByText('Tokyo, Japan')).toBeVisible();
 
   // 現在の天気情報が表示されていることを確認
   await expect(page.getByTestId('current-weather')).toBeVisible();

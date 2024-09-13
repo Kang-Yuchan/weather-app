@@ -77,29 +77,33 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
         </div>
       </div>
 
-      <h3 className={styles.sectionTitle}>1日の概要</h3>
-      <div className={styles.details}>
-        {dayDetails.map((detail, index) => (
-          <DetailItem key={index} datail={detail} />
-        ))}
+      <div data-testid="day-details">
+        <h3 className={styles.sectionTitle}>1日の概要</h3>
+        <div className={styles.details}>
+          {dayDetails.map((detail, index) => (
+            <DetailItem key={index} datail={detail} />
+          ))}
+        </div>
       </div>
-
-      <h3 className={styles.sectionTitle}>天文情報</h3>
-      <div className={styles.details}>
-        {astroDetails.map((detail, index) => (
-          <DetailItem key={index} datail={detail} />
-        ))}
+      <div data-testid="astro-details">
+        <h3 className={styles.sectionTitle}>天文情報</h3>
+        <div className={styles.details}>
+          {astroDetails.map((detail, index) => (
+            <DetailItem key={index} datail={detail} />
+          ))}
+        </div>
       </div>
-
-      <h3 className={styles.sectionTitle}>時間ごとの詳細</h3>
-      <div className={styles.hourlyDetails}>
-        {hour.map((h, index) => (
-          <HoulyItemCard key={index} item={h} handleHourClick={handleHourClick} />
-        ))}
+      <div data-testid="hourly-details">
+        <h3 className={styles.sectionTitle}>時間ごとの詳細</h3>
+        <div className={styles.hourlyDetails}>
+          {hour.map((h, index) => (
+            <HoulyItemCard key={index} item={h} handleHourClick={handleHourClick} />
+          ))}
+        </div>
       </div>
 
       {selectedHour && (
-        <div className={styles.selectedHourDetailsWrapper}>
+        <div className={styles.selectedHourDetailsWrapper} data-testid="selected-hour-details">
           <h4>選択時間の詳細: {selectedHour.time.split(' ')[1]}</h4>
           <div className={styles.details}>
             <DetailItem datail={{ label: '気温 (°C)', value: selectedHour.temp_c }} />
