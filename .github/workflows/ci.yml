@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI
 
 on:
   push:
@@ -72,11 +72,6 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.47.1-focal
       options: --user 1001 --shm-size=1gb
-    strategy:
-      fail-fast: false
-      matrix:
-        shardIndex: [1, 2, 3]
-        shardTotal: [3]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -100,11 +95,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Run Playwright tests
-        run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: pnpm exec playwright test
+        env:
+          CI: 'true'
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-report-${{ matrix.shardIndex }}
+          name: playwright-report
           path: playwright-report/
           retention-days: 30
 
