@@ -1,0 +1,17 @@
+.searchBar {
+  margin-bottom: 20px;
+  @include mobile {
+    max-width: 90%;
+  }
+}
+
+.message {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  color: $text-color;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
