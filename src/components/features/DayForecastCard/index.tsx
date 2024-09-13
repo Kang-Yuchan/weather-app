@@ -10,7 +10,7 @@ type DayForecastCardProps = {
 
 const DayForecastCard = ({ location, day }: DayForecastCardProps) => {
   return (
-    <Link href={`/specific_day/${location}/${day.date}`} className={styles.dayForecast}>
+    <Link href={`/specific_day/${location}/${day.date}`} className={styles.dayForecast} role="link">
       <div className={styles.date}>
         {new Date(day.date).toLocaleDateString('ja-JP', {
           weekday: 'short',

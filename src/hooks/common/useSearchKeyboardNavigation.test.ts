@@ -22,11 +22,13 @@ describe('useSearchKeyboardNavigation', () => {
       })
     );
 
+  // hookの初期状態が正しく設定されているかテスト
   it('initializes with correct default values', () => {
     const { result } = setup();
     expect(result.current.selectedIndex).toBe(-1);
   });
 
+  // 下矢印キーを押したときの動作をテスト
   it('handles ArrowDown key press', () => {
     const { result } = setup();
 
@@ -41,6 +43,7 @@ describe('useSearchKeyboardNavigation', () => {
     expect(result.current.selectedIndex).toBe(0);
   });
 
+  // 上矢印キーを押したときの動作をテスト
   it('handles ArrowUp key press', () => {
     const { result } = setup();
 
@@ -82,6 +85,7 @@ describe('useSearchKeyboardNavigation', () => {
     expect(result.current.selectedIndex).toBe(1);
   });
 
+  // 選択項目がある状態でEnterキーを押したときの動作をテスト
   it('handles Enter key press with selection', () => {
     const { result } = setup();
 
@@ -107,6 +111,7 @@ describe('useSearchKeyboardNavigation', () => {
     expect(mockSetIsFocused).toHaveBeenCalledWith(false);
   });
 
+  // 選択項目がない状態でEnterキーを押したときの動作をテスト
   it('handles Enter key press without selection', () => {
     const { result } = setup();
 
@@ -122,6 +127,7 @@ describe('useSearchKeyboardNavigation', () => {
     expect(mockSetIsFocused).toHaveBeenCalledWith(false);
   });
 
+  // Escapeキーを押したときの動作をテスト
   it('handles Escape key press', () => {
     const { result } = setup();
 
@@ -137,6 +143,7 @@ describe('useSearchKeyboardNavigation', () => {
     expect(result.current.selectedIndex).toBe(-1);
   });
 
+  // isComposingがtrueの場合にキー入力を処理しないことをテスト
   it('does not process keys when isComposing is true', () => {
     const { result } = setup();
 

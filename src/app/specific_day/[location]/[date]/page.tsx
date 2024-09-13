@@ -3,7 +3,7 @@
 import Layout from '@/components/Layout';
 import styles from './page.module.scss';
 import { formatDate } from '@/lib/format';
-import useSpecificDayWeather from '@/hooks/weather/useSpecificDayWeather';
+import { useSpecificDayWeather } from '@/hooks';
 import SpecificDayWeatherDisplay from '@/components/features/SpecificDayWeatherDisplay';
 import LocationSearchBar from '@/components/features/LocationSearchBar';
 import { useRouter } from 'next/navigation';

@@ -3,9 +3,7 @@ import useLocationSearch from './useLocationSearch';
 import useSWR from 'swr';
 import { mockSearchLocationData } from '@/lib/mockData';
 
-// SWRをモック
 jest.mock('swr');
-
 const useSWRmock = useSWR as jest.Mock;
 
 describe('useLocationSearch', () => {
@@ -73,13 +71,13 @@ describe('useLocationSearch', () => {
     expect(result.current.isLoading).toBe(false);
   });
 
+  // ローディング状態の処理が正しくされてるか
   it('handles loading state correctly', () => {
     useSWRmock.mockReturnValue({
       data: [],
       error: null,
       isLoading: true,
     });
-    // ローディング状態の処理が正しくされてるか
     const { result } = renderHook(() => useLocationSearch());
     expect(result.current.isLoading).toBe(true);
   });
