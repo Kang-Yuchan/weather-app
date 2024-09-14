@@ -61,6 +61,8 @@ const CurrentWeatherDisplay = ({ weather }: CurrentWeatherDisplayProps) => {
             width={64}
             height={64}
             className={styles.weatherIcon}
+            priority={true}
+            loading="eager"
           />
           <span>{current.condition.text}</span>
         </div>
