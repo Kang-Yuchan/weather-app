@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-import withPurgeCss from 'next-purgecss';
-
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -25,13 +23,4 @@ const nextConfig = {
   },
 };
 
-// PurgeCSSの設定（開発環境では無効化）
-const config =
-  process.env.NODE_ENV === 'production'
-    ? withPurgeCss({
-        purgeCssPaths: ['app/**/*', 'components/**/*'],
-        ...nextConfig,
-      })
-    : nextConfig;
-
-export default config;
+export default nextConfig;
