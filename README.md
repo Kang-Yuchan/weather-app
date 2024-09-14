@@ -107,6 +107,8 @@ weather-app/
 │   └── favicon.ico
 ├── src/
 │   ├── app/
+│   │   ├── api
+│   │   │   └── weather
 │   │   ├── specific_day/[location]/[date]/
 │   │   │   ├── page.module.scss
 │   │   │   ├── page.test.tsx
