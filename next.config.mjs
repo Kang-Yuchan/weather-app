@@ -34,6 +34,12 @@ const purgeCssConfig = {
     greedy: [/^Noto_Sans_JP/, /^[a-zA-Z]+$/],
   },
   cssModules: true,
+  extractors: [
+    {
+      extractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+      extensions: ['tsx', 'scss'],
+    },
+  ],
   cssModulesWhitelist: [/^[A-Za-z0-9-_]+$/],
   whitelistPatterns: [/^__next/, /^Noto_Sans_JP__/],
   rejected: true,
