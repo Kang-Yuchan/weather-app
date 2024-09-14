@@ -5,6 +5,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import DetailItem from '@/components/ui/DetailItem';
 import HoulyItemCard from '@/components/features/HourlyDetailCard';
+import { getTemperatureColor } from '@/utils/temperatureUtils';
 
 type SpecificDayWeatherDisplayProps = {
   weather: SpecificDayResponse;
@@ -18,15 +19,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
 
   if (!weather || !weather.forecast || !weather.forecast.forecastday[0]) return null;
 
-  const getTemperatureColor = (temp: number) => {
-    if (temp >= 35) return styles.scorching;
-    if (temp >= 30) return styles.hot;
-    if (temp >= 25) return styles.warm;
-    if (temp >= 20) return styles.mild;
-    if (temp >= 15) return styles.cool;
-    if (temp >= 5) return styles.cold;
-    return styles.freezing;
-  };
+  const temperatureColorClass = getTemperatureColor(day.avgtemp_c, styles);
 
   const dayDetails = [
     { label: '最高気温 (°C)', value: day.maxtemp_c },
@@ -57,7 +50,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
 
   return (
     <div
-      className={classNames(styles.weatherDisplay, getTemperatureColor(day.avgtemp_c))}
+      className={classNames(styles.weatherDisplay, temperatureColorClass)}
       data-testid="specific-day-weather"
     >
       <div className={styles.mainInfo}>

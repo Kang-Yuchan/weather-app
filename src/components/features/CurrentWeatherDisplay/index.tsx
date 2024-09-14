@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import Image from 'next/image';
 import classNames from 'classnames';
 import DetailItem from '@/components/ui/DetailItem';
+import { getTemperatureColor } from '@/utils/temperatureUtils';
 
 type CurrentWeatherDisplayProps = {
   weather: WeatherResponse;
@@ -13,15 +14,7 @@ const CurrentWeatherDisplay = ({ weather }: CurrentWeatherDisplayProps) => {
 
   const { location, current } = weather;
 
-  const getTemperatureColor = (temp: number) => {
-    if (temp >= 35) return styles.scorching;
-    if (temp >= 30) return styles.hot;
-    if (temp >= 25) return styles.warm;
-    if (temp >= 20) return styles.mild;
-    if (temp >= 15) return styles.cool;
-    if (temp >= 5) return styles.cold;
-    return styles.freezing;
-  };
+  const temperatureColorClass = getTemperatureColor(current.temp_c, styles);
 
   const details = [
     { label: '気温 (°C)', value: current.temp_c },
@@ -53,7 +46,7 @@ const CurrentWeatherDisplay = ({ weather }: CurrentWeatherDisplayProps) => {
 
   return (
     <div
-      className={classNames(styles.weatherDisplay, getTemperatureColor(current.temp_c))}
+      className={classNames(styles.weatherDisplay, temperatureColorClass)}
       data-testid="current-weather"
     >
       <div className={styles.mainInfo}>

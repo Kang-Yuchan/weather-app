@@ -51,10 +51,6 @@ const LocationSearchBar = ({ placeholder, className, onSearch }: SearchBarProps)
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)}
           onKeyDown={handleKeyDown}
-          aria-label="Search location"
-          aria-autocomplete="list"
-          aria-controls="search-suggestions"
-          aria-expanded={isFocused}
         />
       </div>
       {isFocused && (
