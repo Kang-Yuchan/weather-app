@@ -70,7 +70,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
         </div>
       </div>
 
-      <div data-testid="day-details">
+      <div className={styles.subDetailsWrapper} data-testid="day-details">
         <h3 className={styles.sectionTitle}>1日の概要</h3>
         <div className={styles.details}>
           {dayDetails.map((detail, index) => (
@@ -78,7 +78,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
           ))}
         </div>
       </div>
-      <div data-testid="astro-details">
+      <div className={styles.subDetailsWrapper} data-testid="astro-details">
         <h3 className={styles.sectionTitle}>天文情報</h3>
         <div className={styles.details}>
           {astroDetails.map((detail, index) => (
@@ -86,7 +86,7 @@ const SpecificDayWeatherDisplay = ({ weather }: SpecificDayWeatherDisplayProps) 
           ))}
         </div>
       </div>
-      <div data-testid="hourly-details">
+      <div className={styles.subDetailsWrapper} data-testid="hourly-details">
         <h3 className={styles.sectionTitle}>時間ごとの詳細</h3>
         <div className={styles.hourlyDetails}>
           {hour.map((h, index) => (
