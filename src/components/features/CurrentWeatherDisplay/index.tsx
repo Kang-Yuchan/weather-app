@@ -52,7 +52,10 @@ const CurrentWeatherDisplay = ({ weather }: CurrentWeatherDisplayProps) => {
   ];
 
   return (
-    <div className={classNames(styles.weatherDisplay, getTemperatureColor(current.temp_c))}>
+    <div
+      className={classNames(styles.weatherDisplay, getTemperatureColor(current.temp_c))}
+      data-testid="current-weather"
+    >
       <div className={styles.mainInfo}>
         <h2 className={styles.location}>
           {location.name}, {location.country}

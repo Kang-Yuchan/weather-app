@@ -11,7 +11,9 @@ type LayoutProps = {
 const Layout = ({ title, className, children }: LayoutProps) => {
   return (
     <main className={classNames(styles.layout, className)}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title} data-testid="page-title">
+        {title}
+      </h1>
       <div className={styles.container}>{children}</div>
     </main>
   );
