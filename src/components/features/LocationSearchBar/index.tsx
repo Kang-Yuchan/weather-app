@@ -5,14 +5,20 @@ import styles from './index.module.scss';
 import { useLocationSearch, useSearchKeyboardNavigation } from '@/hooks';
 
 type SearchBarProps = {
+  initialQuery?: string;
   placeholder?: string;
   className?: string;
   onSearch: (query: string) => void;
 };
 
-const LocationSearchBar = ({ placeholder, className, onSearch }: SearchBarProps) => {
+const LocationSearchBar = ({
+  initialQuery = '',
+  placeholder,
+  className,
+  onSearch,
+}: SearchBarProps) => {
   const { setQuery, suggestions, isLoading, error } = useLocationSearch();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(initialQuery);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleSuggestionClick = useCallback(
