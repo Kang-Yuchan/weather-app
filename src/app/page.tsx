@@ -6,8 +6,14 @@ import LocationSearchBar from '@/components/features/LocationSearchBar';
 import { useCurrentWeather, useForecastWeather } from '@/hooks';
 import CurrentWeatherDisplay from '@/components/features/CurrentWeatherDisplay';
 import ForecastWeatherDisplay from '@/components/features/ForecastWeatherDisplay';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-export default function Home() {
+type HomePageProps = {
+  searchParams: { q?: string };
+};
+
+export default function Home({ searchParams }: HomePageProps) {
   const {
     weather,
     onSearch: onCurrentSearch,
@@ -21,10 +27,19 @@ export default function Home() {
     error: forecastError,
   } = useForecastWeather();
 
+  const router = useRouter();
+
   const onSearch = (q: string) => {
-    onCurrentSearch(q);
-    onForecastSearch(q);
+    router.push(`/?q=${q}`);
   };
+
+  useEffect(() => {
+    const query = searchParams.q;
+    if (query) {
+      onCurrentSearch(query);
+      onForecastSearch(query);
+    }
+  }, [searchParams.q, onCurrentSearch, onForecastSearch]);
 
   const error = currentError || forecastError;
   const isLoading = isCurrentLoading || isForecastLoading;
@@ -32,6 +47,7 @@ export default function Home() {
   return (
     <Layout title="天気アプリケーション">
       <LocationSearchBar
+        initialQuery={searchParams.q}
         onSearch={onSearch}
         className={styles.searchBar}
         placeholder="地名または緯度,経度で検索"

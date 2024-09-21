@@ -47,3 +47,32 @@ test('navigate to specific day forecast', async ({ page }) => {
   // 特定の日の天気情報が表示されていることを確認
   await expect(page.getByTestId('specific-day-weather')).toBeVisible();
 });
+
+// 新しいテストケース: URLクエリパラメータを使用した検索
+test('search using URL query parameter', async ({ page }) => {
+  // クエリパラメータ付きでページに遷移
+  await page.goto('/?q=Tokyo');
+
+  // 検索バーが正しく更新されていることを確認
+  const searchBar = page.getByRole('textbox');
+  await expect(searchBar).toHaveValue('Tokyo');
+
+  // 結果が表示されるのを待つ
+  await expect(page.getByText('Tokyo, Japan')).toBeVisible();
+
+  // 現在の天気情報が表示されていることを確認
+  await expect(page.getByTestId('current-weather')).toBeVisible();
+
+  // 予報が表示されていることを確認
+  await expect(page.getByTestId('forecast-weather')).toBeVisible();
+
+  // ページをリロード
+  await page.reload();
+
+  // リロード後も検索結果が維持されていることを確認
+  await expect(page.getByText('Tokyo, Japan')).toBeVisible();
+  await expect(searchBar).toHaveValue('Tokyo');
+
+  // URLの状態が保持されていることを確認
+  expect(page.url()).toContain('?q=Tokyo');
+});

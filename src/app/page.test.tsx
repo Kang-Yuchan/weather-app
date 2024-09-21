@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react';
 import Home from './page';
 import { useCurrentWeather, useForecastWeather } from '@/hooks';
 
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
+  useSearchParams: () => new URLSearchParams(),
+}));
+
 jest.mock('@/hooks', () => ({
   useCurrentWeather: jest.fn(),
   useForecastWeather: jest.fn(),
@@ -27,6 +34,9 @@ jest.mock('@/components/features/ForecastWeatherDisplay', () => {
 });
 
 describe('Home Page', () => {
+  const mockOnCurrentSearch = jest.fn();
+  const mockOnForecastSearch = jest.fn();
+
   beforeEach(() => {
     (useCurrentWeather as jest.Mock).mockReturnValue({
       weather: null,
@@ -44,7 +54,7 @@ describe('Home Page', () => {
 
   // ページが正しくレンダリングされるか
   it('renders the page correctly', () => {
-    render(<Home />);
+    render(<Home searchParams={{}} />);
     expect(screen.getByTestId('search-bar')).toBeInTheDocument();
   });
 
@@ -52,18 +62,18 @@ describe('Home Page', () => {
   it('displays weather data when loaded', () => {
     (useCurrentWeather as jest.Mock).mockReturnValue({
       weather: { location: { name: 'Tokyo' }, current: {} },
-      onSearch: jest.fn(),
+      onSearch: mockOnCurrentSearch,
       isLoading: false,
       error: null,
     });
     (useForecastWeather as jest.Mock).mockReturnValue({
       forecast: { location: { name: 'Tokyo' }, forecast: {} },
-      onSearch: jest.fn(),
+      onSearch: mockOnForecastSearch,
       isLoading: false,
       error: null,
     });
 
-    render(<Home />);
+    render(<Home searchParams={{}} />);
     expect(screen.getByTestId('current-weather')).toBeInTheDocument();
     expect(screen.getByTestId('forecast-weather')).toBeInTheDocument();
   });
@@ -77,7 +87,7 @@ describe('Home Page', () => {
       error: null,
     });
 
-    render(<Home />);
+    render(<Home searchParams={{}} />);
     expect(screen.getByText('天気情報を読み込み中...')).toBeInTheDocument();
   });
 
@@ -90,7 +100,7 @@ describe('Home Page', () => {
       error: new Error('Failed to fetch'),
     });
 
-    render(<Home />);
+    render(<Home searchParams={{}} />);
     expect(screen.getByText('エラーが発生しました。もう一度お試しください。')).toBeInTheDocument();
   });
 });
