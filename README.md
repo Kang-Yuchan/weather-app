@@ -68,7 +68,7 @@ $ pnpm install
 `.env.sample`を参考に `.env.local` ファイルを作成し、以下の内容を追加します
 
 ```
-NEXT_PUBLIC_WEATHER_API_KEY=your api key
+WEATHER_API_KEY=your api key
 ```
 
 4. 開発サーバーの起動
